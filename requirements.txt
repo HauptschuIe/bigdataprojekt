@@ -1,0 +1,7 @@
+bs4
+pymongo
+neo4j
+ray
+flask
+flask-restx
+flask-cors

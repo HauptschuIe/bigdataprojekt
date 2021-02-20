@@ -1,0 +1,238 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "description" : "A rudimentary API for transferring data between Neo4j and the GUI",
+    "version" : "1.0.0",
+    "title" : "Chefkoch API",
+    "license" : {
+      "name" : "Apache 2.0",
+      "url" : "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "host" : "virtserver.swaggerhub.com",
+  "basePath" : "/Big-data/BigData/1.0.0",
+  "tags" : [ {
+    "name" : "Chefkoch API",
+    "description" : "Operations available to regular developers"
+  } ],
+  "schemes" : [ "https" ],
+  "paths" : {
+    "/Chefkoch API/all-recipes" : {
+      "get" : {
+        "tags" : [ "Chefkoch API" ],
+        "summary" : "returns all the recipes",
+        "description" : "This method returns a certain number of recipes. The recipes include id, name, category, labels and ingredients.\n",
+        "operationId" : "get_all_recipes",
+        "produces" : [ "application/json" ],
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "successfully returned recipes"
+          },
+          "400" : {
+            "description" : "recipes not found"
+          }
+        }
+      }
+    },
+    "/Chefkoch API/recipes-by-name" : {
+      "get" : {
+        "tags" : [ "Chefkoch API" ],
+        "summary" : "returns recipes by name",
+        "description" : "This method returns recipes by name.The recipe includes id, name, category, labels and ingredients.\n",
+        "operationId" : "get_recipe",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "name",
+          "in" : "path",
+          "description" : "Recipe name",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "limit",
+          "in" : "query",
+          "description" : "maximum number of records to return",
+          "required" : false,
+          "type" : "integer",
+          "maximum" : 50,
+          "minimum" : 0,
+          "format" : "int32"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successfully returned recipe"
+          },
+          "400" : {
+            "description" : "recipe not found"
+          }
+        }
+      }
+    },
+    "/Chefkoch API/see-what-else-the-author-published/" : {
+      "get" : {
+        "tags" : [ "Chefkoch API" ],
+        "summary" : "returns recipes by name",
+        "description" : "This method returns a certain number of recipes provided by the same author.The returned recipes include id, name, category, labels and ingredients.\n",
+        "operationId" : "get_recipes_by_author",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "rec_id",
+          "in" : "path",
+          "description" : "Recipe id",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "limit",
+          "in" : "query",
+          "description" : "maximum number of records to return",
+          "required" : false,
+          "type" : "integer",
+          "maximum" : 50,
+          "minimum" : 0,
+          "format" : "int32"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successfully returned recipes"
+          },
+          "400" : {
+            "description" : "recipes not found"
+          }
+        }
+      }
+    },
+    "/Chefkoch API/see-what-other-users-rated/" : {
+      "get" : {
+        "tags" : [ "Chefkoch API" ],
+        "summary" : "returns recipes other users rated",
+        "description" : "This method returns a certain number of recipes other user have positively rated (rating >=4).The returned recipes include id, name, category, labels and ingredients.\n",
+        "operationId" : "get_recipes_by_rating",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "rec_id",
+          "in" : "path",
+          "description" : "Recipe id",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "limit",
+          "in" : "query",
+          "description" : "maximum number of records to return",
+          "required" : false,
+          "type" : "integer",
+          "maximum" : 50,
+          "minimum" : 0,
+          "format" : "int32"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successfully returned recipes"
+          },
+          "400" : {
+            "description" : "recipes not found"
+          }
+        }
+      }
+    },
+    "/Chefkoch API/similar-recipes-based-on-ingredients/" : {
+      "get" : {
+        "tags" : [ "Chefkoch API" ],
+        "summary" : "returns similar recipes based on common ingredients",
+        "description" : "This method returns a certain number of recipes that are similar to the chosen recipe based on common ingredients.The returned recipes include id, name, category, labels and ingredients.\n",
+        "operationId" : "get_similar_recipes",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "rec_id",
+          "in" : "path",
+          "description" : "Recipe id",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "limit",
+          "in" : "query",
+          "description" : "maximum number of records to return",
+          "required" : false,
+          "type" : "integer",
+          "maximum" : 50,
+          "minimum" : 0,
+          "format" : "int32"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successfully returned recipes"
+          },
+          "400" : {
+            "description" : "recipes not found"
+          }
+        }
+      }
+    },
+    "/Chefkoch API/similar-recipes-based-on-ingredients-and-keywords/" : {
+      "get" : {
+        "tags" : [ "Chefkoch API" ],
+        "summary" : "returns similar recipes based on common ingredients",
+        "description" : "This method returns a certain number of recipes that are similar to the chosen recipe based on common ingredients and keywords.The returned recipes include id, name, category, labels and ingredients.\n",
+        "operationId" : "get_similar_recipes_by_ingredients_and_keywords",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "rec_id",
+          "in" : "path",
+          "description" : "Recipe id",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "limit",
+          "in" : "query",
+          "description" : "maximum number of records to return",
+          "required" : false,
+          "type" : "integer",
+          "maximum" : 50,
+          "minimum" : 0,
+          "format" : "int32"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successfully returned recipes"
+          },
+          "400" : {
+            "description" : "recipes not found"
+          }
+        }
+      }
+    },
+    "/Chefkoch API/similar-recipes-based-on-ingredients-advanced/" : {
+      "get" : {
+        "tags" : [ "Chefkoch API" ],
+        "summary" : "returns similar recipes based on common ingredients",
+        "description" : "This method returns a certain number of recipes that are similar to the chosen recipe based on common ingredients.The returned recipes include id, name, category, labels and ingredients.\n",
+        "operationId" : "get_similar_recipes_by_ingredients_advanced_metrics",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "rec_id",
+          "in" : "path",
+          "description" : "Recipe id",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "limit",
+          "in" : "query",
+          "description" : "maximum number of records to return",
+          "required" : false,
+          "type" : "integer",
+          "maximum" : 50,
+          "minimum" : 0,
+          "format" : "int32"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successfully returned recipes"
+          },
+          "400" : {
+            "description" : "recipes not found"
+          }
+        }
+      }
+    }
+  },
+  "definitions" : { }
+}
